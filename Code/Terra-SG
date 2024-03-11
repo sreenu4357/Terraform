@@ -1,0 +1,44 @@
+provider "aws" {
+region = "us-east-1"
+}
+resource "aws_instance" "one"{
+ami = "ami-0f403e3180720dd7e"
+instance_type = "t2.micro"
+tags = {
+Name = "instance-terra"
+}
+key_name = "sreenu43"
+vpc_security_group_ids = [aws_security_group.three.id]
+}
+
+-----above section is crearing ec2 instance and attache the below security group-------
+
+resource "aws_security_group" "three" {
+name = "terraform-sg"
+description = " this my terra sg"
+
+ingress {
+from_port = 22
+to_port = 22
+protocol = "tcp"
+cidr_blocks = ["0.0.0.0/0"]
+}
+egress {
+from_port = 22
+to_port = 22
+protocol = "tcp"
+cidr_blocks = ["0.0.0.0/0"]
+}
+ingress {
+from_port = 8080
+to_port = 8080
+protocol = "tcp"
+cidr_blocks = ["0.0.0.0/0"]
+}
+egress {
+from_port = 0
+to_port = 0
+protocol = "-1"
+cidr_blocks = ["0.0.0.0/0"]
+}
+}
