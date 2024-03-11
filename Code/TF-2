@@ -1,0 +1,46 @@
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "AKIAZJ7LXSWKOPV22OXP"
+  secret_key = "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"
+}
+
+resource "aws_instance" "two" {
+  tags = {
+    Name        = "ts-1"
+    environment = "prod"
+    project     = "app"
+  }
+  ami               = var.ami-id
+  instance_type     = var.itype
+  key_name          = "sreenu43"
+  availability_zone = var.izone
+  root_block_device {
+    volume_size = var.vnum
+  }
+  count = var.cnum
+}
+
+variable "ami-id" {
+  type    = string
+  default = "ami-0f403e3180720dd7e"
+}
+variable "itype" {
+  description = "this is type"
+  type        = string
+  default     = "t2.micro"
+}
+variable "izone" {
+  description = " thsi is zone"
+  type        = string
+  default     = "us-east-1c"
+}
+variable "vnum" {
+  description = "this is volume size"
+  type        = number
+  default     = "10"
+}
+variable "cnum" {
+  description = "count of instances"
+  type        = number
+  default     = "1"
+}
