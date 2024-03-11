@@ -1,0 +1,23 @@
+Amazon-linux
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+sudo yum -y install terraform
+
+
+UBUNTU
+
+wget https://releases.hashicorp.com/terraform/1.1.3/terraform_1.1.3_linux_amd64.zip
+sudo apt-get install zip -y
+Unzip terraform 
+mv terraform /usr/local/bin/
+terraform version
+
+ALTERNATIVES OF TERRAFORM
+AWS -- > CFT (JSON/YAML)
+AZURE -- > ARM TEMPLATES (JSON)
+GCP -- > CLOUD DEPLOYMENT MANAGER (YAML/ PYTHON)
+PULUMI -- (PYTHON, JS, C#, GO & TYPE SCRIPT)
+ANSIBLE -- > (YAML)
+PUPPET
+CHEF
+VAGRANT 
+CROSSPLANE
