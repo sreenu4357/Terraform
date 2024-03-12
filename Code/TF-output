@@ -1,0 +1,22 @@
+provider "aws" {
+region = "us-east-1"
+}
+
+resource "aws_instance" "one" {
+ami = "ami-0f403e3180720dd7e"
+instance_type = "t2.micro"
+tags = var.itags
+}
+
+variable "itags" {
+type = map(string)
+default = {
+Name = "flm-instance"
+Project = "aws"
+Environment = "Dev"
+}
+}
+
+output "two" {
+value = [aws_instance.one.public_ip, aws_instance.one.subnet_id]
+}
