@@ -1,0 +1,17 @@
+provider "aws" {
+region = "us-east-1"
+}
+
+resource "aws_instance" "one" {
+ami = "ami-0f403e3180720dd7e"
+instance_type = "t2.micro"
+tags = {
+Name = "instance-1"
+}
+count = var.abc ? 1 : 2
+}
+
+variable "abc" {
+type = bool
+default = true
+}
