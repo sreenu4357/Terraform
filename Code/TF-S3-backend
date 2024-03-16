@@ -1,0 +1,7 @@
+terraform {
+backend "s3" {
+bucket = "sreenu.flm"
+key = "backup/terraform.tfstate"
+region = "us-east-1"
+}
+}
