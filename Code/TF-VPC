@@ -1,0 +1,40 @@
+provider "aws" {
+region = "us-east-1"
+}
+
+resource "aws_vpc" "one" {
+tags = {
+name = "terraform-vpc"
+}
+cidr_block = "10.0.0.0/16"
+instance_tenancy = "default"
+enable_dns_hostnames = "true"
+}
+
+
+resource "aws_subnet" "two" {
+vpc_id = aws_vpc.one.id
+tags = {
+name = "terraform-subnet"
+}
+availability_zone = "us-east-1a"
+cidr_block = "10.0.0.0/16"
+}
+
+resource "aws_internet_gateway" "three" {
+tags = {
+name = "terraform-igw"
+}
+vpc_id = aws_vpc.one.id
+}
+
+resource "aws_route_table" "four" {
+tags = {
+name = "terra-RT"
+}
+vpc_id = aws_vpc.one.id
+route {
+cidr_block = "0.0.0.0/0"
+gateway_id = aws_internet_gateway.three.id
+}
+}
