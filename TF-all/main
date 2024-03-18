@@ -1,0 +1,6 @@
+resource "aws_launch_configuration" "mylc" {
+image_id = "ami-0d7a109bf30624c99"
+instance_type = "t2.micro"
+key_name = "sreenu43"
+security_groups = [aws_security_group.mysg.id]
+
