@@ -1,0 +1,21 @@
+ yum install git -y
+    2  wget https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/samples/nodejs.zip
+    3  ll
+    4  unzip nodejs.zip
+    5  ll
+    6  rm -rf nodejs.zip
+    7  ll
+    8  git clone https://git-codecommit.us-east-1.amazonaws.com/v1/repos/mycicd
+    9  ll
+   10  cd mycicd
+   11  ll
+   12  cd ..
+   13  mv app.js cron.yaml index.html package.json mycicd
+   14  cd mycicd
+   15  ll
+   16  git init .
+   17  git init
+   18  git add .
+   19  git commit -m "all files" .
+   20  git log
+   21  git push
